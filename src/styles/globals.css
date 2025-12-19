@@ -1,0 +1,264 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* #region  /**=========== Primary Color =========== */
+  /* !STARTERCONF Customize these variable, copy and paste from /styles/colors.css for list of colors */
+  --tw-color-primary-50: 240 249 255;
+  --tw-color-primary-100: 224 242 254;
+  --tw-color-primary-200: 186 230 253;
+  --tw-color-primary-300: 125 211 252;
+  --tw-color-primary-400: 56 189 248;
+  --tw-color-primary-500: 14 165 233;
+  --tw-color-primary-600: 2 132 199;
+  --tw-color-primary-700: 3 105 161;
+  --tw-color-primary-800: 7 89 133;
+  --tw-color-primary-900: 12 74 110;
+  --color-primary-50: rgb(var(--tw-color-primary-50));
+
+  /* #f0f9ff */
+  --color-primary-100: rgb(var(--tw-color-primary-100));
+
+  /* #e0f2fe */
+  --color-primary-200: rgb(var(--tw-color-primary-200));
+
+  /* #bae6fd */
+  --color-primary-300: rgb(var(--tw-color-primary-300));
+
+  /* #7dd3fc */
+  --color-primary-400: rgb(var(--tw-color-primary-400));
+
+  /* #38bdf8 */
+  --color-primary-500: rgb(var(--tw-color-primary-500));
+
+  /* #0ea5e9 */
+  --color-primary-600: rgb(var(--tw-color-primary-600));
+
+  /* #0284c7 */
+  --color-primary-700: rgb(var(--tw-color-primary-700));
+
+  /* #0369a1 */
+  --color-primary-800: rgb(var(--tw-color-primary-800));
+
+  /* #075985 */
+  --color-primary-900: rgb(var(--tw-color-primary-900));
+
+  /* #0c4a6e */
+  /* #endregion  /**======== Primary Color =========== */
+}
+
+@layer base {
+
+
+  /* inter var - latin */
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: block;
+    src: url('/fonts/inter-var-latin.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+      U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212,
+      U+2215, U+FEFF, U+FFFD;
+  }
+
+  .cursor-newtab {
+    cursor: url('/images/new-tab.png') 10 10, pointer;
+  }
+
+  /* #region  /**=========== Typography =========== */
+  .h0 {
+    @apply font-primary text-3xl font-bold md:text-5xl;
+  }
+
+  h1,
+  .h1 {
+    @apply font-primary text-2xl font-bold md:text-4xl;
+  }
+
+  h2,
+  .h2 {
+    @apply font-primary text-xl font-bold md:text-3xl;
+  }
+
+  h3,
+  .h3 {
+    @apply font-primary text-lg font-bold md:text-2xl;
+  }
+
+  h4,
+  .h4 {
+    @apply font-primary text-base font-bold md:text-lg;
+  }
+
+  body,
+  .p {
+    @apply font-primary text-sm md:text-base;
+  }
+
+  /* #endregion  /**======== Typography =========== */
+
+  .layout {
+    /* 1100px */
+    max-width: 68.75rem;
+    @apply mx-auto w-11/12;
+  }
+
+  @layer components {
+    .headingSecond {
+      @apply font-extrabold leading-snug mx-auto text-center;
+      /* Small screens */
+      @apply text-amber-500 uppercase text-base max-w-full whitespace-nowrap;
+      /* Medium screens */
+      @apply sm:text-lg sm:max-w-xl sm:whitespace-normal;
+      /* Large screens */
+      @apply md:text-3xl lg:text-[40px] lg:max-w-5xl;
+      /* Extra large screens */
+      @apply xl:text-5xl;
+    }
+  }
+
+  @layer components {
+    .headingThird {
+      @apply font-extrabold text-center mx-auto text-[#343434];
+      @apply m-0 p-0 -mt-2 mb-0;
+      /* Font sizes */
+      @apply text-2xl sm:text-3xl md:text-4xl lg:text-[44px] xl:text-6xl;
+      /* Width control */
+      @apply max-w-[100%] sm:max-w-[90%] md:max-w-[85%] lg:max-w-[80%] xl:max-w-[75%];
+
+      /* Line-height */
+      @apply leading-tight sm:leading-snug md:leading-normal lg:leading-[1.1] xl:leading-[1.15];
+    }
+
+    .headingHighlight {
+      @apply text-amber-500;
+    }
+  }
+
+  @layer components {
+    .btn {
+      @apply rounded-lg px-4 py-2 border border-transparent cursor-pointer transition-all duration-300;
+      font-family: 'Inter', sans-serif;
+      font-weight: var(--btn-font-weight-bold);
+      font-size: var(--btn-font-size-md);
+      @apply text-white bg-amber-500 hover:bg-amber-700 hover:shadow-xl;
+    }
+
+    /* Sizes */
+    .btn-sm {
+      font-size: var(--btn-font-size-sm);
+      @apply px-3 py-1;
+    }
+
+    .btn-md {
+      font-size: var(--btn-font-size-md);
+      @apply px-4 py-2;
+    }
+
+    .btn-lg {
+      font-size: var(--btn-font-size-lg);
+      @apply px-6 py-3;
+    }
+
+    .btn-xl {
+      font-size: var(--btn-font-size-xl);
+      @apply px-8 py-4;
+    }
+
+    /* Weight variations */
+    .btn-normal {
+      font-weight: var(--btn-font-weight-normal);
+    }
+
+    .btn-bold {
+      font-weight: var(--btn-font-weight-bold);
+    }
+
+    .btn-extrabold {
+      font-weight: var(--btn-font-weight-extrabold);
+    }
+  }
+
+  @layer components {
+
+    /* Main heading style */
+    .headingMain {
+      @apply font-extrabold text-center text-[#343434] mx-auto m-0 p-0 -mt-2 mb-0;
+      /* Responsive font sizes */
+      @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl;
+      /* Responsive max width */
+      @apply w-full max-w-4xl sm:max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto;
+      /* Line-height */
+      @apply leading-tight sm:leading-snug md:leading-normal;
+    }
+
+    /* Highlighted text */
+    .headingHighlight {
+      @apply text-amber-500;
+    }
+  }
+
+  @layer components {
+
+    /* Reusable body text for all <p> tags */
+    .textBody {
+      @apply font-light text-gray-800 mt-5 sm:mt-3 md:mt-4 lg:mt-5 max-w-full text-justify mx-auto leading-relaxed;
+      /* Responsive font sizes */
+      @apply text-sm sm:text-base md:text-lg lg:text-xl;
+      /* Optional: subtle tracking for readability */
+      @apply tracking-wide;
+    }
+  }
+
+
+  @layer components {
+    .textConsistent {
+      @apply text-base md:text-base sm:text-base;
+      /* same font size on all screens */
+    }
+  }
+
+  @layer components {
+
+    /* Global heading font-size */
+    .headingGlobal {
+      @apply text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-4xl;
+    }
+  }
+
+  .bg-dark a.custom-link {
+    @apply border-gray-200 hover:border-gray-200/0;
+  }
+
+  /* Class to adjust with sticky footer */
+  .min-h-main {
+    @apply min-h-[calc(100vh-56px)];
+  }
+}
+
+@layer utilities {
+  .animated-underline {
+    background-image: linear-gradient(#33333300, #33333300),
+      linear-gradient(to right,
+        var(--color-primary-400),
+        var(--color-primary-500));
+    background-size: 100% 2px, 0 2px;
+    background-position: 100% 100%, 0 100%;
+    background-repeat: no-repeat;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .animated-underline {
+      transition: 0.3s ease;
+      transition-property: background-size, color, background-color,
+        border-color;
+    }
+  }
+
+  .animated-underline:hover,
+  .animated-underline:focus-visible {
+    background-size: 0 2px, 100% 2px;
+  }
+}

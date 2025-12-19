@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="200px" height="200px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <g>
+    <path fill="none" d="M0 0h24v24H0z" />
+    
+    <!-- Siren Body -->
+    <path id="siren" fill="#FF0000" d="M4 20v-6a8 8 0 1 1 16 0v6h1v2H3v-2h1zm2 0h12v-6a6 6 0 1 0-12 0v6z">
+      <animate attributeName="fill" values="#FF0000;#FF6666;#FF0000" dur="1s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- Top Light -->
+    <path fill="#FF0000" d="M11 2h2v3h-2V2z">
+      <animate attributeName="opacity" values="1;0.3;1" dur="1s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- Right Ray -->
+    <path fill="#FF0000" d="M20.778 4.808l1.414 1.414-2.12 2.121-1.415-1.414z">
+      <animateTransform attributeName="transform" type="rotate" from="0 21 6" to="360 21 6" dur="2s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- Left Ray -->
+    <path fill="#FF0000" d="M2.808 6.222l1.414-1.414 2.121 2.12L4.93 8.344z">
+      <animateTransform attributeName="transform" type="rotate" from="0 3 6" to="-360 3 6" dur="2s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- Flash Line -->
+    <path fill="#FFCCCC" d="M7 14a5 5 0 0 1 5-5v2a3 3 0 0 0-3 3H7z">
+      <animate attributeName="opacity" values="1;0.2;1" dur="1.5s" repeatCount="indefinite"/>
+    </path>
+  </g>
+</svg>
