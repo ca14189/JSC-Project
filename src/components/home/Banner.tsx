@@ -96,12 +96,21 @@ const Banner = ({ headerData }: BannerProps) => {
 
       <div
         className="relative z-10 px-4 sm:px-6 md:px-10 w-full"
+        // style={{
+        //   maxWidth: screenSize === 'medium' ? '720px' : screenSize === 'large' ? '100%' : '100%',
+        //   marginLeft: screenSize === 'medium' || screenSize === 'small' ? 'auto' : 0,
+        //   marginRight: screenSize === 'medium' || screenSize === 'small' ? 'auto' : 0,
+        //   textAlign: screenSize === 'small' ? 'center' : 'left', // small centered, md/lg left aligned
+        // }}
+
+        // ===change==
         style={{
-          maxWidth: screenSize === 'medium' ? '720px' : screenSize === 'large' ? '100%' : '100%',
-          marginLeft: screenSize === 'medium' || screenSize === 'small' ? 'auto' : 0,
-          marginRight: screenSize === 'medium' || screenSize === 'small' ? 'auto' : 0,
-          textAlign: screenSize === 'small' ? 'center' : 'left', // small centered, md/lg left aligned
-        }}
+  maxWidth: screenSize === 'medium' ? '720px' : '100%',
+  marginLeft: screenSize === 'medium' || screenSize === 'small' ? 'auto' : 0,
+  marginRight: screenSize === 'medium' || screenSize === 'small' ? 'auto' : 0,
+  textAlign: screenSize === 'small' ? 'center' : 'left',
+}}
+
       >
         <div className="max-w-5xl ">
           {(screenSize === 'small' || screenSize === 'medium') ? (

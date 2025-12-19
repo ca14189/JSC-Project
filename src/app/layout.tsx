@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Montserrat } from 'next/font/google';
+// import { Montserrat } from 'next/font/google';
 import Script from 'next/script';
 import '@/styles/colors.css';
 import '@/styles/globals.css';
@@ -82,7 +82,7 @@ export async function generateMetadata(): Promise<Metadata> {
   if (!res.ok) throw new Error('Failed to fetch layout metadata');
 
   const data = await res.json();
-  const meta = data[0]?.contents || [];
+  // const meta = data[0]?.contents || [];
   //console.log("meta ", meta[0]?.data);
 
   return {

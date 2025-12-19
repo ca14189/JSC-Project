@@ -6,8 +6,13 @@ interface WhyHireSectionProps {
   whyHireSectionData: { type: string; data: string; name: string, media_ref?: string }[];
 }
 const WhyHire: React.FC<WhyHireSectionProps> = ({ whyHireSectionData }) => {
+
   //  console.log("WhyHireSectionData", whyHireSectionData);
-  const cardsData = whyHireSectionData?.slice(1)
+  const safeData = whyHireSectionData ?? [];
+const cardsData = safeData.slice(1);
+
+// =====old===
+  // const cardsData = whyHireSectionData?.slice(1)
 
   return (
     <div className='my-16'>

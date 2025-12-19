@@ -28,9 +28,12 @@ const Footer: React.FC<FooterProps> = ({ footerDetails, footerBannerDetails }) =
     return <div className="text-center text-white py-4">...Loading</div>;
   }
 
-  const footerDetailsData = footerDetails ?? [];
-  const footerPoster = footerDetailsData?.[6]?.media_ref;
-  const links = footerDetails?.slice(8);
+  // const footerDetailsData = footerDetails ?? [];
+  // const footerPoster = footerDetailsData?.[6]?.media_ref;
+  // const links = footerDetails?.slice(8);
+const footerDetailsData = footerDetails ?? [];
+const footerPoster = footerDetailsData?.[6]?.media_ref ?? ''; 
+const links = footerDetailsData?.slice(8) ?? []; 
 
   return (
     <div className="bg-[#343434] text-white py-8 px-4 md:px-16 mt-10">
@@ -93,18 +96,18 @@ const Footer: React.FC<FooterProps> = ({ footerDetails, footerBannerDetails }) =
             </p>
 
 
-            {footerPoster && (
-              <div className='mt-4 flex justify-center'>
-                <Image src={footerPoster} alt='Footer Banner' width={100} height={100} />
-              </div>
-            )}
+       {footerPoster && (
+  <div className='mt-4 flex justify-center'>
+    <Image src={footerPoster} alt='Footer Banner' width={100} height={100} />
+  </div>
+)}
 
 
-            <div className='mt-4 flex justify-center space-x-3 text-2xl m-30 md:ml-3'>
-              <a target='_blank' rel='noopener noreferrer' href={links?.[0]?.data} className='hover:text-brandlight'><FaFacebookF /></a>
-              <a target='_blank' rel='noopener noreferrer' href={links?.[3]?.data} className='hover:text-brandlight'><FaLinkedin /></a>
-              <a target='_blank' rel='noopener noreferrer' href={links?.[1]?.data} className='hover:text-brandlight'><FaInstagram /></a>
-            </div>
+          <div className='mt-4 flex justify-center space-x-3 text-2xl m-30 md:ml-3'>
+  <a target='_blank' rel='noopener noreferrer' href={links[0]?.data ?? '#'} className='hover:text-brandlight'><FaFacebookF /></a>
+  <a target='_blank' rel='noopener noreferrer' href={links[3]?.data ?? '#'} className='hover:text-brandlight'><FaLinkedin /></a>
+  <a target='_blank' rel='noopener noreferrer' href={links[1]?.data ?? '#'} className='hover:text-brandlight'><FaInstagram /></a>
+</div>
           </div>
 
         </div>

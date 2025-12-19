@@ -17,8 +17,14 @@ interface GoogleCardSection {
 
 
 const GoogleCards: React.FC<GoogleCardSection> = ({ googleCardData }) => {
-    const googleImageMen = googleCardData[0]?.media_ref;
-    const googleImage = googleCardData[3]?.media_ref;
+  
+    const safeData = googleCardData ?? [];
+const googleImageMen = safeData[0]?.media_ref ?? '';
+const googleImage = safeData[3]?.media_ref ?? '';
+
+// =========old=========
+    // const googleImageMen = googleCardData[0]?.media_ref;
+    // const googleImage = googleCardData[3]?.media_ref;
 
     // googleCardData.forEach((item, index) => {
     //     console.log(`Google card data [${index}] ::::>`, item.data);
@@ -34,21 +40,21 @@ const GoogleCards: React.FC<GoogleCardSection> = ({ googleCardData }) => {
                 <div className="flex justify-between items-center">
                     <div className="flex items-center space-x-3">
                         <div className="relative w-16 h-16">
-                            {googleCardData && (
+                            {googleImageMen && (
+  <Image
+    src={googleImageMen}
+    alt="Hailey Jones"
+    fill
+    className="object-cover rounded-full"
+  />
+)}
 
-                                <Image
-                                    src={googleImageMen as string}
-                                    alt="Hailey Jones"
-                                    fill
-                                    className="object-cover rounded-full"
-                                />
-                            )}
                         </div>
                         <div>
                             <p className="font-semibold text-gray-800 uppercase">
-                                {googleCardData[1]?.data}
+                                {safeData[1]?.data}
                             </p>
-                            <p className="text-sm text-gray-800 font-bold">{googleCardData[2]?.data}</p>
+                            <p className="text-sm text-gray-800 font-bold">{safeData[2]?.data}</p>
                         </div>
                     </div>
                     {googleImage && (
@@ -61,7 +67,7 @@ const GoogleCards: React.FC<GoogleCardSection> = ({ googleCardData }) => {
                     )}
                 </div>
                 <p className="mt-4 text-gray-800 text-sm">
-                    {googleCardData[4]?.data}
+                    {safeData[4]?.data}
                 </p>
             </div>
 
@@ -79,9 +85,9 @@ const GoogleCards: React.FC<GoogleCardSection> = ({ googleCardData }) => {
                     )}
                 </div>
                 <p className="mt-3 font-semibold text-gray-800 uppercase text-sm">
-                    {googleCardData[6]?.data}
+                    {safeData[6]?.data}
                 </p>
-                <p className="text-xs text-gray-800 font-bold">{googleCardData[7]?.data}</p>
+                <p className="text-xs text-gray-800 font-bold">{safeData[7]?.data}</p>
                 <div className="pt-2">
                     {googleImage && (
 
@@ -108,9 +114,9 @@ const GoogleCards: React.FC<GoogleCardSection> = ({ googleCardData }) => {
                     )}
                 </div>
                 <p className="mt-3 font-semibold text-gray-800 uppercase text-sm">
-                    {googleCardData[9]?.data}
+                    {safeData[9]?.data}
                 </p>
-                <p className="text-xs text-gray-800 font-bold">{googleCardData[11]?.data}</p>
+                <p className="text-xs text-gray-800 font-bold">{safeData[11]?.data}</p>
                 <div className="pt-2">
                     {googleImage && (
                         <Image
@@ -137,9 +143,9 @@ const GoogleCards: React.FC<GoogleCardSection> = ({ googleCardData }) => {
                     )}
                 </div>
                 <p className="mt-3 font-semibold text-gray-800 uppercase text-sm">
-                    {googleCardData[14]?.data}
+                    {safeData[14]?.data}
                 </p>
-                <p className="text-xs text-gray-800 font-bold">{googleCardData[15]?.data}</p>
+                <p className="text-xs text-gray-800 font-bold">{safeData[15]?.data}</p>
                 <div className="pt-2">
                     {googleImage && (
                         <Image
@@ -168,13 +174,13 @@ const GoogleCards: React.FC<GoogleCardSection> = ({ googleCardData }) => {
                     </div>
                     <div>
                         <p className="font-semibold text-gray-800 uppercase">
-                            {googleCardData[18]?.data}
+                            {safeData[18]?.data}
                         </p>
-                        <p className="text-sm text-gray-800 font-bold">{googleCardData[19]?.data}</p>
+                        <p className="text-sm text-gray-800 font-bold">{safeData[19]?.data}</p>
                     </div>
                 </div>
                 <p className="mt-3 text-gray-800 text-sm">
-                    {googleCardData[20]?.data}
+                    {safeData[20]?.data}
                 </p>
             </div>
         </div>

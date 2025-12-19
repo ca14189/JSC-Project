@@ -48,7 +48,7 @@ export default function VerifyOtp() {
               <Field
                 name="otp"
                 type="text"
-                placeholder="Enter OTP"
+                placeholder={`Enter OTP for ${email}`}
                 className="w-full border px-3 py-2 rounded"
               />
               <button

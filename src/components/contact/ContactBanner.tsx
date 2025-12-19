@@ -283,34 +283,62 @@ export default function ContactBanner({
 }: ContactBannerProps) {
   const headerBg = header.find((item) => item.type === 'media')?.media_ref || '';
   const headerTitle = header.find((item) => item.type === 'text')?.data || '';
-  const headerSubtitle = header.filter((item) => item.type === 'text')[1]?.data || '';
+  const headerSubtitle =
+  header.filter((item) => item.type === 'text')[1]?.data || '';
 
-  const header2Image = header2?.[1].media_ref || '';
-  const address = header2?.[3]?.data || '';
+const header2Image = header2[1]?.media_ref || '';
+const address = header2[3]?.data || '';
 
-  const phone = header2.find((item) =>
-    typeof item.data === 'string' && item.data.includes('+91')
+
+  // const header2Image = header2?.[1].media_ref || '';
+  // const address = header2?.[3]?.data || '';
+
+  // const phone = header2.find((item) =>
+  //   typeof item.data === 'string' && item.data.includes('+91')
+  // )?.data || '';
+
+  // const email = header2.find((item) =>
+  //   typeof item.data === 'string' && item.data.includes('.com')
+  // )?.data || '';
+
+  // const whatsapp = header2.find((item) =>
+  //   typeof item.data === 'string' && item.data.includes('WhatsApp:')
+  // )?.data.replace('WhatsApp:', '').trim() || '';
+
+  // const altPhone = header2.find((item) =>
+  //   typeof item.data === 'string' && item.data.includes('Alt:')
+  // )?.data.replace('Alt:', '').trim() || '';
+
+// const header2Image = header2[1]?.media_ref || '';
+// const address = header2[3]?.data || '';
+
+const phone =
+  header2.find(
+    (item) => typeof item.data === 'string' && item.data.includes('+91')
   )?.data || '';
 
-  const email = header2.find((item) =>
-    typeof item.data === 'string' && item.data.includes('.com')
+const email =
+  header2.find(
+    (item) => typeof item.data === 'string' && item.data.includes('.com')
   )?.data || '';
 
-  const whatsapp = header2.find((item) =>
-    typeof item.data === 'string' && item.data.includes('WhatsApp:')
+const whatsapp =
+  header2.find(
+    (item) => typeof item.data === 'string' && item.data.includes('WhatsApp:')
   )?.data.replace('WhatsApp:', '').trim() || '';
 
-  const altPhone = header2.find((item) =>
-    typeof item.data === 'string' && item.data.includes('Alt:')
+const altPhone =
+  header2.find(
+    (item) => typeof item.data === 'string' && item.data.includes('Alt:')
   )?.data.replace('Alt:', '').trim() || '';
 
-  const middleTitle = middle.find((item) =>
-    item.data.includes('Send Us')
-  )?.data || '';
+  // const middleTitle = middle.find((item) =>
+  //   item.data.includes('Send Us')
+  // )?.data || '';
 
-  const middleParas = middle.filter(
-    (item) => item.type === 'text' && !item.data.includes('Send Us')
-  );
+  // const middleParas = middle.filter(
+  //   (item) => item.type === 'text' && !item.data.includes('Send Us')
+  // );
 
   const aboutTitle = lowerMiddle[0]?.data || '';
   const aboutParas = lowerMiddle.slice(1);

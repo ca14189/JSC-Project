@@ -6,9 +6,14 @@ interface WhatToExpectItems {
 
 const WhatToExpect = ({whatToExpectData} :WhatToExpectItems) => {
   //console.log("whatToExpectData", whatToExpectData);
+const safeData = whatToExpectData ?? [];
 
-  const words = whatToExpectData?.[0]?.data;
-  const expectation = whatToExpectData.slice(1);
+const words = safeData[0]?.data ?? '';
+const expectation = safeData.slice(1);
+
+// ====old===
+  // const words = whatToExpectData?.[0]?.data;
+  // const expectation = whatToExpectData.slice(1);
  // console.log("headinng>>>>>", words);
   
   return (

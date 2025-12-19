@@ -31,16 +31,25 @@ const SignIn = () => {
           validationSchema={loginSchema}
           onSubmit={async (values, { setSubmitting }) => {
             try {
+              // const res = await login(values);
+              // const token = res.data.accessToken;
+              // if (res.success) {
+              //   if (res.data?.accessToken) {
+              //    setTokenCookie(token);
+              //   }
+              //   router.push("/dashboard");
+              // } else {
+              //   Notifier.error(res.message || "Invalid credentials");
+              // }
               const res = await login(values);
-              const token = res.data.accessToken;
-              if (res.success) {
-                if (res.data?.accessToken) {
-                 setTokenCookie(token);
-                }
-                router.push("/dashboard");
-              } else {
-                Notifier.error(res.message || "Invalid credentials");
-              }
+
+if (res.success && res.data?.accessToken) {
+  setTokenCookie(res.data.accessToken);
+  router.push("/dashboard");
+} else {
+  Notifier.error(res.message || "Invalid credentials");
+}
+
             } catch (err: any) {
               Notifier.error(err?.message || "Login failed! Please try again.");
             } finally {

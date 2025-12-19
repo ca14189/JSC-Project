@@ -165,7 +165,7 @@ export default function SearchJobPage() {
           ) : (
             filtered.map((job) => {
               const isSaved = !!saved[job._id];
-              const slug = createJobSlug(job);
+              // const slug = createJobSlug(job);
 
               return (
                 <Link
