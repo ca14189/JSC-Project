@@ -5,7 +5,7 @@ interface FaqSectionProps {
   FaqSectionData: { type: string; data: string; name: string; title?: string }[];
 }
 const Faq: React.FC<FaqSectionProps> = ({ FaqSectionData }) => {
-  const faqData = FaqSectionData?.slice(3)
+  const faqData = FaqSectionData?.slice(3) ?? []
   return (
     <div>
       <div className="flex flex-wrap w-full mt-10 md:mt-20 md:justify-center">

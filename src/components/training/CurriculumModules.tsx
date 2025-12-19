@@ -1,3 +1,8 @@
+
+
+
+
+
 import Image from 'next/image';
 import React from 'react';
 
@@ -14,27 +19,52 @@ interface CurriculumModulesProps {
 
 // 🔹 Transform raw API data into structured heading + modules
 function transformData(raw: CurriculumModulesComponent[]) {
-  const headingOne = raw?.[0]?.data || '';
-  const headingTwo = raw?.[1]?.data || '';
+  // ✅ raw hamesha array hai, index optional ho sakta hai
+  const headingOne = raw[0]?.data ?? '';
+  const headingTwo = raw[1]?.data ?? '';
+
   const modules: {
     title: string;
     description: string;
     images: string[];
   }[] = [];
 
-  let currentModule: { title: string; description: string; images: string[] } | null = null;
+  let currentModule:
+    | {
+        title: string;
+        description: string;
+        images: string[];
+      }
+    | null = null;
 
+  // ✅ raw guaranteed array → slice safe
   raw.slice(2).forEach((item) => {
+    // Text item with "title || description"
     if (item.type === 'text' && item.data?.includes('||')) {
-      if (currentModule) modules.push(currentModule);
+      if (currentModule) {
+        modules.push(currentModule);
+      }
+
       const [title, description] = item.data.split('||');
-      currentModule = { title: title.trim(), description: description.trim(), images: [] };
-    } else if (item.type === 'media' && currentModule) {
-      currentModule.images.push(item.media_ref?.trim() || '');
+
+      currentModule = {
+        title: title?.trim() ?? '',
+        description: description?.trim() ?? '',
+        images: [],
+      };
+    }
+
+    // Media item → push image to current module
+    else if (item.type === 'media' && currentModule) {
+      if (item.media_ref) {
+        currentModule.images.push(item.media_ref.trim());
+      }
     }
   });
 
-  if (currentModule) modules.push(currentModule);
+  if (currentModule) {
+    modules.push(currentModule);
+  }
 
   return { headingOne, headingTwo, modules };
 }
@@ -42,7 +72,9 @@ function transformData(raw: CurriculumModulesComponent[]) {
 const CurriculumModules: React.FC<CurriculumModulesProps> = ({
   curriculumModulesData,
 }) => {
-  const { headingOne, headingTwo, modules } = transformData(curriculumModulesData);
+  // ✅ curriculumModulesData already array → safe
+  const { headingOne, headingTwo, modules } =
+    transformData(curriculumModulesData);
 
   return (
     <section>
@@ -67,11 +99,13 @@ const CurriculumModules: React.FC<CurriculumModulesProps> = ({
             >
               {/* Module Title */}
               <div className="h-14 bg-amber-500 text-center pt-2 rounded-t-xl">
-                <p className="text-2xl md:text-3xl font-extrabold">{mod.title}</p>
+                <p className="text-2xl md:text-3xl font-extrabold">
+                  {mod.title}
+                </p>
               </div>
 
               {/* Module Description */}
-              <p className="text-white text-center textBody  px-4">
+              <p className="text-white text-center textBody px-4">
                 {mod.description}
               </p>
 
@@ -79,27 +113,21 @@ const CurriculumModules: React.FC<CurriculumModulesProps> = ({
               <div className="overflow-hidden relative border border-[#494949] rounded-b-xl pb-1">
                 <div className="flex w-[210%] h-[48px] animate-scroll bg-[#494949]">
                   {[...Array(2)].map((_, repeatIndex) => (
-                    <div key={`repeat-${repeatIndex}`} className="flex w-1/2">
-                      {mod.images.map((src, imgIndex) =>
-                        src ? (
-                          <div key={`${imgIndex}-${repeatIndex}`} className="mx-2 flex-shrink-0">
-                            <Image
-                              src={src}
-                              alt={`${mod.title}-img-${imgIndex}`}
-                              width={48}
-                              height={48}
-                              className="object-contain w-[48px] h-[48px]"
-                            />
-                          </div>
-                        ) : (
-                          <div
-                            key={`${imgIndex}-${repeatIndex}`}
-                            className="w-[48px] h-[48px] mx-2 bg-gray-200 text-xs flex items-center justify-center text-red-500"
-                          >
-                            No Img
-                          </div>
-                        )
-                      )}
+                    <div key={repeatIndex} className="flex w-1/2">
+                      {mod.images.map((src, imgIndex) => (
+                        <div
+                          key={`${imgIndex}-${repeatIndex}`}
+                          className="mx-2 flex-shrink-0"
+                        >
+                          <Image
+                            src={src}
+                            alt={`${mod.title}-img-${imgIndex}`}
+                            width={48}
+                            height={48}
+                            className="object-contain w-[48px] h-[48px]"
+                          />
+                        </div>
+                      ))}
                     </div>
                   ))}
                 </div>

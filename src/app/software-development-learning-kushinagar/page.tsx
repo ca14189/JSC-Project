@@ -31,30 +31,25 @@ async function fetchMeta() {
 
 export async function generateMetadata(): Promise<Metadata> {
   const meta = await fetchMeta();
-// console.log("this is meta",meta)
+  const content = meta.content ?? {};
+
   return {
-    title: meta.title ?? "Default Title",
-    description: meta.description ?? "Default Description",
+    title: content.title ?? "Default Title",
+    description: content.description ?? "Default Description",
 
-    openGraph: meta.openGraph ?? {},  
+    openGraph: content.openGraph,
+    twitter: content.twitter,
+    keywords: content.keywords,
+    robots: content.robots,
+    icons: content.icons,
+    authors: content.authors,
 
-    twitter: meta.twitter ?? {},       
+    creator: content.creator,
+    publisher: content.publisher,
+    applicationName: content.applicationName,
 
-    keywords: meta.keywords ?? [],     
-
-    robots: meta.robots ?? {},
-
-    icons: meta.icons ?? {},
-
-    authors: meta.authors ?? [],
-
-    creator: meta.creator,
-    publisher: meta.publisher,
-
-    applicationName: meta.applicationName,
-
-    metadataBase: meta.metadataBase
-      ? new URL(meta.metadataBase)
+    metadataBase: content.metadataBase
+      ? new URL(content.metadataBase)
       : undefined,
   };
 }

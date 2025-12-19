@@ -60,7 +60,7 @@ const Navbar = ({ navbarData, contactSubitems }: NavbarProps) => {
       } as DropdownNavbarItem;
     }
     return item;
-  });
+  }) ?? [];
 
   const menuItems: NavbarItem[] = [
     ...navMenuItems,
