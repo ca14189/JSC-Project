@@ -18,7 +18,7 @@ const FaqSection: React.FC<FaqSectionProps> = ({faqSectionData}) => {
  
 
   const faqPoster = faqSectionData?.[0]?.media_ref;
-  const faqData = faqSectionData?.slice(6,11)
+  const faqData = faqSectionData?.slice(6,11) ?? []
   
   return (
     <div className="w-full">
