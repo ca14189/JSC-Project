@@ -26,15 +26,14 @@ const FaqSection: React.FC<FaqSectionProps> = ({faqSectionData}) => {
       <div className="relative w-full h-[455px] mt-10 md:mt-28">
         {/* Background Image */}
         {faqPoster && (
-          <Image
-          src={faqPoster}
-          alt="Background"
-          // fill
-          width={1500}
-          height={500}
-          className="object-cover h-auto w-[500]"
-          priority
-        />
+         <Image
+  src={faqPoster}
+  alt="Background"
+  fill
+  className="object-cover"
+  priority
+/>
+
         )}
         
 

@@ -40,7 +40,7 @@ const cardsData = safeData.slice(1);
                 </p>
               </div>
 
-             {value && value.media_ref && (
+ {value.media_ref && (
   <div className="flex justify-center items-end mt-4">
     <Image
       src={value.media_ref}

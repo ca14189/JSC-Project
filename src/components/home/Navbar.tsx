@@ -31,7 +31,7 @@ interface NavbarProps {
 
 const Navbar = ({ navbarData, contactSubitems }: NavbarProps) => {
 
-  const navLogo = (navbarData[0] as BaseNavbarItem)?.media_ref;
+  // const navLogo = (navbarData[0] as BaseNavbarItem)?.media_ref;
   const [menuOpen, setMenuOpen] = useState(false);
   const [isSignIn, setIsSignIn] = useState(false);
   const pathname = usePathname();
@@ -48,7 +48,9 @@ const Navbar = ({ navbarData, contactSubitems }: NavbarProps) => {
   }, []);
 
   // Dynamically add subItems to "Contact Us"
- const safeNavbarData = navbarData ?? [];
+const safeNavbarData: NavbarItem[] = navbarData ?? [];
+
+const navLogo = safeNavbarData[0]?.media_ref;
 
 const navMenuItems: NavbarItem[] = safeNavbarData.slice(1).map((item) => {
   if (item.title === 'Contact Us') {
