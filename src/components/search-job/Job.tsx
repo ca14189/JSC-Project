@@ -9,7 +9,7 @@ import {
   FaBookmark,
 } from "react-icons/fa";
 import { MdOutlineWork } from "react-icons/md";
-import { createJobSlug } from "@/utils/slugify";
+// import { createJobSlug } from "@/utils/slugify";
 
 export default function SearchJobPage() {
   const [jobs, setJobs] = useState<any[]>([]);

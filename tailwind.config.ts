@@ -1,7 +1,7 @@
 // tailwind.config.ts
 
 import type { Config } from 'tailwindcss';
-import defaultTheme from 'tailwindcss/defaultTheme';
+// import defaultTheme from 'tailwindcss/defaultTheme';
 
 const config: Config = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],

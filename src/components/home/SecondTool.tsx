@@ -1,6 +1,6 @@
 'use client';
 
-import { log } from 'console';
+// import { log } from 'console';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 

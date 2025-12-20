@@ -121,13 +121,13 @@ const AboutBanner: React.FC<AboutBannerProps> = ({
         {/* Image */}
         <div className="flex-1 flex justify-center items-center max-w-[600px] md:mx-0 order-1 md:order-1 relative">
           <div className="absolute inset-0 w-full h-full border-4 border-brandlight -rotate-3 rounded-lg pointer-events-none z-0 md:w-[100%] md:h-auto" />
-          <Image
-            src={learningImage || '/fallback.jpg'}
-            alt={learningTitle || "Customized Learning Paths Image"}
-            width={500}
-            height={500}
-            className="relative z-10 rounded-lg w-full h-auto object-contain"
-          />
+        <Image
+  src={learningImage || '/fallback.jpg'}
+  alt={learningTitle}
+  width={500}
+  height={500}
+/>
+
         </div>
 
         {/* Text */}

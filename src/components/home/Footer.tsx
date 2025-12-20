@@ -31,9 +31,13 @@ const Footer: React.FC<FooterProps> = ({ footerDetails, footerBannerDetails }) =
   // const footerDetailsData = footerDetails ?? [];
   // const footerPoster = footerDetailsData?.[6]?.media_ref;
   // const links = footerDetails?.slice(8);
-const footerDetailsData = footerDetails ?? [];
-const footerPoster = footerDetailsData?.[6]?.media_ref ?? ''; 
-const links = footerDetailsData?.slice(8) ?? []; 
+const footerDetailsData = footerDetails;
+
+const footerPoster = footerDetailsData[6]?.media_ref;
+
+
+const links = footerDetailsData.slice(8);
+
 
   return (
     <div className="bg-[#343434] text-white py-8 px-4 md:px-16 mt-10">

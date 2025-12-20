@@ -1,4 +1,4 @@
-import { log } from 'console';
+// import { log } from 'console';
 import Image from 'next/image';
 import React from 'react'
 
@@ -40,15 +40,18 @@ const cardsData = safeData.slice(1);
                 </p>
               </div>
 
-              <div className="flex justify-center items-end mt-4">
-                <Image
-                  src={value?.media_ref ?? ""}
-                  alt="Group Talking"
-                  width={100}
-                  height={100}
-                  className="object-contain"
-                />
-              </div>
+             {value && value.media_ref && (
+  <div className="flex justify-center items-end mt-4">
+    <Image
+      src={value.media_ref}
+      alt="Group Talking"
+      width={100}
+      height={100}
+      className="object-contain"
+    />
+  </div>
+)}
+
             </div>
           ))}
       </div>

@@ -81,7 +81,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
   if (!res.ok) throw new Error('Failed to fetch layout metadata');
 
-  const data = await res.json();
+  // const data = await res.json();
   // const meta = data[0]?.contents || [];
   //console.log("meta ", meta[0]?.data);
 

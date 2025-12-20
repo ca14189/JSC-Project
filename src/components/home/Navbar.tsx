@@ -48,19 +48,21 @@ const Navbar = ({ navbarData, contactSubitems }: NavbarProps) => {
   }, []);
 
   // Dynamically add subItems to "Contact Us"
-  const navMenuItems: NavbarItem[] = navbarData?.slice(1)?.map((item) => {
-    if (item.title === 'Contact Us') {
-      return {
-        ...item,
-        subItems: contactSubitems.map((sub) => ({
-          name: sub.title,
-          Title: sub.title,
-          path: sub.data,
-        })),
-      } as DropdownNavbarItem;
-    }
-    return item;
-  }) ?? [];
+ const safeNavbarData = navbarData ?? [];
+
+const navMenuItems: NavbarItem[] = safeNavbarData.slice(1).map((item) => {
+  if (item.title === 'Contact Us') {
+    return {
+      ...item,
+      subItems: contactSubitems.map((sub) => ({
+        name: sub.title,
+        Title: sub.title,
+        path: sub.data,
+      })),
+    } as DropdownNavbarItem;
+  }
+  return item;
+});
 
   const menuItems: NavbarItem[] = [
     ...navMenuItems,
