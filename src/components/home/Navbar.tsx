@@ -68,12 +68,13 @@ const navMenuItems: NavbarItem[] = safeNavbarData.slice(1).map((item) => {
 
   const menuItems: NavbarItem[] = [
     ...navMenuItems,
-    // {
-    //   data: '/fullstack-developer-job',
-    //   name: 'Search for Job',
-    //   title: 'Search for Job',
-    //   type: 'link',
-    // },
+    { data: '/our-team', name: 'Our Team', title: 'Our Team', type: "link" },
+    {
+      data: '/fullstack-developer-job',
+      name: 'Search for Job',
+      title: 'Search for Job',
+      type: 'link',
+    },
     { data: '#', name: 'Login', title: 'Login', isButton: true },
   ];
 
@@ -83,7 +84,7 @@ const navMenuItems: NavbarItem[] = safeNavbarData.slice(1).map((item) => {
     <>
       <div className={`${increaseNavHeight}`}>
         <div className="bg-brandlight h-[69px] relative z-50">
-          <div className="container mx-auto h-full flex items-center px-4 ">
+          <div className="container mx-auto h-full flex items-center px-4">
             {/* Logo */}
             {pathname !== '/' ? (
               <Link href="/" className="block">
@@ -121,7 +122,7 @@ const navMenuItems: NavbarItem[] = safeNavbarData.slice(1).map((item) => {
             </div>
 
             {/* Desktop Menu */}
-            <div className="hidden lg:flex ml-auto space-x-4 text-black font-medium">
+            <div className="hidden lg:flex ml-auto space-x-2 text-black font-medium">
               {menuItems.map((item) =>
                 'isButton' in item ? (
                   <NavItem

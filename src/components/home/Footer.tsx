@@ -7,6 +7,7 @@ import {
   FaMapMarkerAlt
 } from 'react-icons/fa';
 import { formatWithLineBreaks } from '../../utils/formatAddress';
+import Link from 'next/link';
 
 interface FooterItems {
   type: 'text' | 'media';
@@ -75,7 +76,13 @@ const links = footerDetailsData.slice(8);
               {/* Second Column */}
               <ul className="space-y-2 mt-4 md:mt-0 text-center md:text-left">
                 <li className="hover:text-brandlight cursor-pointer">
-                  <a href="https://blog.jschamps.com">Blog</a>
+                  <Link href="/fullstack-ai-development">Full Stack AI Development</Link>
+                </li>
+                <li className="hover:text-brandlight cursor-pointer">
+                  <Link href="/blogs">Blogs</Link>
+                </li>
+                <li className="hover:text-brandlight cursor-pointer">
+                  <Link href="/our-team">Our Team</Link>
                 </li>
                 <li className="hover:text-brandlight cursor-pointer">
                   Contact Us

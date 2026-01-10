@@ -8,7 +8,7 @@ export default async function JobDetails(props: any) {
   const { slug } = await props.params;
 
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL_L}/api/cms/jobs/route/${slug}`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/jobs/route/${slug}`,
     { cache: "no-store" }
   );
 

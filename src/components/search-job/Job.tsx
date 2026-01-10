@@ -25,7 +25,7 @@ export default function SearchJobPage() {
   useEffect(() => {
     async function fetchJobs() {
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL_L}/api/cms/jobs`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/jobs`);
         console.log("Fetch response status ::::", res.status);
         const json = await res.json();
         console.log("Fetched jobs :", json.data);
@@ -53,7 +53,7 @@ export default function SearchJobPage() {
     if (experience) params.append("experience", experience);
 
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL_L}/api/cms/jobs/search?${params.toString()}`
+      `${process.env.NEXT_PUBLIC_BASE_URL}/jobs/search?${params.toString()}`
     );
     console.log("Search response status :::", res.status);
     const json = await res.json();
