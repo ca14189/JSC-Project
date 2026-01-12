@@ -1,5 +1,5 @@
 export type Blog = {
-  id: number;
+  slug: string;
   title: string;
   excerpt: string;
   image: string;
@@ -12,7 +12,7 @@ export type Blog = {
 
 export const blogs: Blog[] = [
   {
-    id: 1,
+    slug: "how-smart-design-increases-business-growth",
     title: "How smart design increases business growth",
     excerpt:
       "Discover how thoughtful UI/UX choices can directly impact conversions, trust, and user engagement.",
@@ -55,7 +55,7 @@ export const blogs: Blog[] = [
       `,
   },
   {
-    id: 2,
+    slug: "the-future-of-remote-work-culture",
     title: "The future of remote work culture",
     excerpt:
       "Remote work is no longer a trend — it’s the future. Here’s how companies can adapt.",
@@ -94,7 +94,7 @@ export const blogs: Blog[] = [
       `,
   },
   {
-    id: 3,
+    slug: "why-performance-matters-in-modern-web-apps",
     title: "Why performance matters in modern web apps",
     excerpt:
       "Speed is the new SEO. Learn how performance directly affects user experience.",

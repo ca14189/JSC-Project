@@ -17,7 +17,7 @@ const team1: TeamMember[] = [
     name: "Rajneesh Srivastav",
     role: "Co Founder",
     image: "/images/dummyUser.png",
-    bio: "Focused on building meaningful products that create long-term impact through innovation and strong values.",
+    bio: "A rare blend of deep engineering and clear product vision. Turns complex AI systems into scalable, real-world solutions. The kind of co-founder every serious tech venture needs.",
     linkedin: "#",
     email: "mailto:hello@example.com",
   },
@@ -34,7 +34,7 @@ const team1: TeamMember[] = [
 const team2: TeamMember[] = [
   {
     name: "Sarthak Deb",
-    role: "AI Lead Engineer",
+    role: "Full Stack AI Engineer",
     image: "/images/dummyUser.png",
     bio: "Focused on building meaningful products that create long-term impact through innovation and strong values.",
     linkedin: "#",
@@ -42,7 +42,7 @@ const team2: TeamMember[] = [
   },
   {
     name: "Suryanshu Pal",
-    role: "AI Engineer",
+    role: "Full Stack AI Engineer",
     image: "/images/dummyUser.png",
     bio: "Drives growth by connecting people with solutions that truly improve how businesses operate.",
     linkedin: "#",
@@ -50,7 +50,7 @@ const team2: TeamMember[] = [
   },
   {
     name: "Siddhant Kumar",
-    role: "AI Engineer",
+    role: "Full Stack AI Engineer",
     image: "/images/dummyUser.png",
     bio: "Focused on building meaningful products that create long-term impact through innovation and strong values.",
     linkedin: "#",
@@ -66,7 +66,7 @@ const team2: TeamMember[] = [
   },
   {
     name: "Pradip Madheshiya",
-    role: "Full Stack AI Developer",
+    role: "Full Stack AI Engineer",
     image: "/images/dummyUser.png",
     bio: "Focused on building meaningful products that create long-term impact through innovation and strong values.",
     linkedin: "#",
@@ -74,7 +74,7 @@ const team2: TeamMember[] = [
   },
   {
     name: "Adarsh Bhargav",
-    role: "Full Stack AI Developer",
+    role: "Full Stack AI Engineer",
     image: "/images/dummyUser.png",
     bio: "Drives growth by connecting people with solutions that truly improve how businesses operate.",
     linkedin: "#",
@@ -82,7 +82,7 @@ const team2: TeamMember[] = [
   },
   {
     name: "Ankur Jaiswal",
-    role: "Full Stack AI Developer",
+    role: "Full Stack AI Engineer",
     image: "/images/dummyUser.png",
     bio: "Focused on building meaningful products that create long-term impact through innovation and strong values.",
     linkedin: "#",

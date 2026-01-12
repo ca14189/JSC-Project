@@ -3,11 +3,11 @@ import Link from "next/link";
 import { blogs } from "@/lib/blogdata";
 
 type Props = {
-  id: string ;
+  slug: string ;
 };
 
-export default function BlogDetailsPage({ id }: Props) {
-  const blog = blogs.find((b) => b.id === Number(id));
+export default function BlogDetailsPage({ slug }: Props) {
+  const blog = blogs.find((b) => b.slug === slug);
 
   if (!blog) {
     return (

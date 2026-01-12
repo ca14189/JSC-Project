@@ -8,7 +8,7 @@ type Props = {
 
 export default function BlogCard({ blog }: Props) {
   return (
-    <Link href={`/blogs/${blog.id}`} className="block">
+    <Link href={`/blogs/${blog.slug}`} className="block">
       <article className="group relative bg-white/70 backdrop-blur-xl border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 min-h-[470px]">
         
         {/* Image */}

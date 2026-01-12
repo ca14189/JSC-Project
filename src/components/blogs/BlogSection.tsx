@@ -20,7 +20,7 @@ export default function BlogSection() {
         {/* Grid */}
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 mt-8">
           {blogs.map((blog) => (
-            <BlogCard key={blog.id} blog={blog} />
+            <BlogCard key={blog.slug} blog={blog} />
           ))}
         </div>
 
