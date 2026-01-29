@@ -129,7 +129,7 @@ const Banner = ({ headerData }: BannerProps) => {
                 className="text-brandlight uppercase font-extrabold break-words whitespace-normal leading-snug pt-3 sm:pt-10 md:pt-16 lg:pt-14 text-[40px] xl:text-5xl text-left"
                 style={{
                   display: '-webkit-box',
-                  WebkitLineClamp: 2,
+                  WebkitLineClamp: 4,
                   WebkitBoxOrient: 'vertical',
                   overflow: 'hidden',
                   maxWidth: '800px',
