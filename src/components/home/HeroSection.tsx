@@ -79,7 +79,6 @@ const HeroSection = ({ heroSectionData }: HeroSectionItem) => {
 
   return (
     <div className="mt-7 sm:mt-12 md:mt-20 border-[1px] border-transparent px-4 sm:px-6 md:px-8 lg:px-0">
-      
       {/* ⭐ Full title with highlight — NO slicing */}
       <p className="headingMain text-center">
         {normalWords}{" "}
@@ -103,8 +102,17 @@ const HeroSection = ({ heroSectionData }: HeroSectionItem) => {
       )}
 
       {/* Paragraph */}
-      <p className="
+      {/* <p className="
         text-[#343434] font-bold text-center w-full max-w-3xl mx-auto
+        mt-4 sm:mt-5 md:mt-6 lg:mt-8
+        text-sm sm:text-base md:text-lg lg:text-xl
+        px-2 sm:px-0
+      ">
+        {paragraph}
+      </p> */}
+      {/* change the style of class from bold to normal */}
+      <p className="
+        text-[#343434] font-normal text-center w-full max-w-3xl mx-auto
         mt-4 sm:mt-5 md:mt-6 lg:mt-8
         text-sm sm:text-base md:text-lg lg:text-xl
         px-2 sm:px-0

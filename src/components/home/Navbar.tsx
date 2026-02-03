@@ -31,6 +31,9 @@ interface NavbarProps {
 
 const Navbar = ({ navbarData, contactSubitems }: NavbarProps) => {
 
+
+  console.log(contactSubitems,"contactSubitems")
+  console.log(navbarData,"navbarData")
   // const navLogo = (navbarData[0] as BaseNavbarItem)?.media_ref;
   const [menuOpen, setMenuOpen] = useState(false);
   const [isSignIn, setIsSignIn] = useState(false);
