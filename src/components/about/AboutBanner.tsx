@@ -47,35 +47,38 @@ const AboutBanner: React.FC<AboutBannerProps> = ({
   return (
     <div>
       {/* Hero Section */}
-      <div className="relative w-full h-[400px]">
-        {headerData.map((item, idx) =>
-          item.type === 'media' && item.media_ref ? (
-            <Image
-              key={idx}
-              src={item.media_ref}
-              alt={`header-image-${idx}`}
-              fill
-              priority
-              className="object-cover"
-            />
-          ) : null
-        )}
-        <div className="absolute inset-0 bg-black/60 z-10 flex flex-col justify-center items-center text-center px-4">
-          {headerData.map((item, idx) =>
-            item.type === 'text' ? (
-              <p
-                key={idx}
-                className={`text-white ${idx === 0
-                  ? 'md:text-[46px] font-bold sm:text-[20px] textBody'
-                  : 'md:text-xl sm:text-xs mt-4 md:mt-8 w-[80%] '
-                  }`}
-              >
-                {item.data}
-              </p>
-            ) : null
-          )}
-        </div>
-      </div>
+     <div className="relative w-full h-[400px]">
+  {headerData.map((item, idx) =>
+    item.type === 'media' && item.media_ref ? (
+      <Image
+        key={idx}
+        src={item.media_ref}
+        alt={`header-image-${idx}`}
+        fill
+        priority
+        className="object-cover"
+      />
+    ) : null
+  )}
+
+  <div className="absolute inset-0 bg-black/60 z-10 flex flex-col justify-center items-center px-4">
+    {headerData.map((item, idx) =>
+      item.type === 'text' ? (
+        <p
+          key={idx}
+          className={`text-white text-center ${
+            idx === 0
+              ? 'text-[24px] sm:text-[32px] md:text-[46px] font-bold leading-tight max-w-[900px]'
+              : 'text-sm sm:text-base md:text-xl mt-4 md:mt-6 max-w-[750px]'
+          }`}
+        >
+          {item.data}
+        </p>
+      ) : null
+    )}
+  </div>
+ </div>
+
       {/* Mentorship Section */}
       <div className="flex flex-col md:flex-row items-center justify-between mt-20 px-4 max-w-screen-xl mx-auto space-y-10 md:space-y-0 md:space-x-20">
         {/* Text Section */}

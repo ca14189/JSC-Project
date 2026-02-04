@@ -260,6 +260,7 @@ import Image from 'next/image';
 import { MdEmail, MdLocationOn, MdPhone } from 'react-icons/md';
 import { FaWhatsapp } from 'react-icons/fa';
 import { formatWithLineBreaks } from '../../utils/formatAddress';
+import { log } from 'console';
 
 interface ContentItem {
   type: 'text' | 'media';
@@ -288,6 +289,10 @@ export default function ContactBanner({
 
 const header2Image = header2[1]?.media_ref || '';
 const address = header2[3]?.data || '';
+const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(
+  `JSChamps ${address}`
+)}&output=embed`;
+
 
 
   // const header2Image = header2?.[1].media_ref || '';
@@ -343,6 +348,7 @@ const altPhone =
   const aboutTitle = lowerMiddle[0]?.data || '';
   const aboutParas = lowerMiddle.slice(1);
   const officeImg = middle[8]?.media_ref || '';
+  // console.log(header2Image,"gggggg"); 
 
   return (
     <div className='text-black'>
@@ -363,7 +369,7 @@ const altPhone =
         {/* Map iframe */}
         <div className='bg-white rounded-lg shadow-lg w-full max-w-[500px] md:h-[350px] overflow-hidden -mt-20 flex-1'>
           <iframe
-            src={header2Image.trim()}
+            src={mapSrc}
             width="100%"
             height="100%"
             style={{ border: 0 }}

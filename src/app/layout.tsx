@@ -56,11 +56,14 @@ async function getLayoutData() {
   if (!res.ok) throw new Error('Failed to fetch layout data');
 
   const data: SectionItem[] = await res.json();
+  
   const nav = data.find((s) => s.component === 'Navbar');
-  const contactSub = data.find((s) => s.component === 'Contact-subitems');
+  // const contactSub = data.find((s) => s.component === 'Contact');
+  const contactSub = data?.[3]
   const footer = data.find((s) => s.component === 'Footer');
   const footerBanner = data.find((s) => s.component === 'Footer-Banner');
-  //console.log("navdata", nav);
+
+  // console.log("navdata", contactSub);
 
   return {
     navbarDetailsData: nav?.contents || [],
