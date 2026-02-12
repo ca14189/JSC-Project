@@ -1,106 +1,117 @@
+// blog detail api is integrated here 
+
 import Image from "next/image";
 import Link from "next/link";
-import { blogs } from "@/lib/blogdata";
 
 type Props = {
-  slug: string ;
+  slug: string;
 };
 
-export default function BlogDetailsPage({ slug }: Props) {
-  const blog = blogs.find((b) => b.slug === slug);
+export default async function BlogDetailsPage({ slug }: Props) {
+  const decodedSlug = decodeURIComponent(slug);
 
+  const res = await fetch(
+    `http://localhost:3001/api/cms/blog/${decodedSlug}?domain=jschamps.com`,
+    { cache: "no-store" }
+  );
+
+  if (!res.ok) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        Blog not found
+      </div>
+    );
+  }
+
+  const { data: blog } = await res.json();
   if (!blog) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center">
         <p className="text-gray-600">Blog not found.</p>
-
-        <Link
-          href="/blogs"
-          className="inline-flex items-center gap-2 px-3 py-2 rounded-lg mt-8
-                    bg-gray-100 text-gray-700 font-medium
-                    hover:bg-gray-200 hover:text-gray-800 transition"
-        >
-          ← Back to Blogs
+        <Link href="/blogs" className="mt-6 underline">
+          Back to Blogs
         </Link>
       </div>
     );
   }
 
   return (
-  <article className="bg-white min-h-screen">
+    <article className="bg-white min-h-screen">
+      <div className="h-20" />
 
-    {/* Top spacing */}
-    <div className="h-20" />
+      <div className="max-w-4xl mx-auto px-6">
 
-    {/* Container */}
-    <div className="max-w-4xl mx-auto px-6">
+        <p className="text-xs uppercase tracking-widest text-gray-400 mb-3">
+          {blog.category}
+        </p>
+        {/* Blog title */}
+<h1 className="text-3xl md:text-4xl font-bold mb-6">
+  {blog.title}
+</h1>
 
-      {/* Category */}
-      <p className="text-xs uppercase tracking-widest text-gray-400 mb-3">
-        {blog.category}
-      </p>
+{/* Author + date section */}
+<div className="flex items-center gap-3 mb-10">
+  <Image
+    src="/images/dummyUser.png"
+    alt={blog.author}
+    width={36}
+    height={36}
+    className="rounded-full"
+  />
 
-      {/* Title */}
-      <h1 className="text-3xl md:text-4xl font-bold text-gray-900 leading-snug mb-4">
-        {blog.title}
-      </h1>
+  <div className="text-sm text-gray-600">
+    <span className="font-medium">{blog.author}</span>
+    <span className="mx-2">•</span>
+    <span>{new Date(blog.date).toDateString()}</span>
+  </div>
+</div>
 
-      {/* Meta */}
-      <div className="flex items-center gap-3 mb-10">
-        <Image
-          src={blog.authorImage}
-          alt={blog.author}
-          width={36}
-          height={36}
-          className="rounded-full"
-        />
-        <div className="text-sm text-gray-600">
-          <span className="font-medium text-gray-900">{blog.author}</span>
-          <span className="mx-2">•</span>
-          <span>{blog.date}</span>
+
+        {/* <h1 className="text-3xl md:text-4xl font-bold mb-6">
+          {blog.title}
+        </h1> */}
+{/* 
+        <div className="flex items-center gap-3 mb-10">
+          <Image
+            src="/images/dummyUser.png"
+            alt={blog.author}
+            width={36}
+            height={36}
+            className="rounded-full"
+          />
+          <div className="text-sm text-gray-600">
+            <span className="font-medium">{blog.author}</span>
+            <span className="mx-2">•</span>
+            <span>{new Date(blog.date).toDateString()}</span>
+          </div>
+        </div> */}
+
+        {/* <div className="mb-10">
+          <Image
+            src={blog.coverImage}
+            alt={blog.title}
+            width={900}
+            height={500}
+            className="rounded-xl"
+          />
+        </div> */}
+
+        {/* <div
+          className="prose max-w-none"
+          dangerouslySetInnerHTML={{ __html: blog.content }}
+        /> */}
+        <div
+  className="blog-content"
+  dangerouslySetInnerHTML={{ __html: blog.content }}
+/>
+
+
+        <div className="mt-16 border-t pt-8">
+          <Link href="/blogs" className="text-sm text-gray-600">
+            ← Back to blogs
+          </Link>
         </div>
       </div>
-
-      {/* Divider */}
-      <div className="border-t mb-10" />
-
-      {/* Featured Image */}
-      <div className="mb-10 flex justify-center">
-        <Image
-          src={blog.image}
-          alt={blog.title}
-          width={600}
-          height={500}
-          className="rounded-xl object-cover"
-        />
-      </div>
-
-      {/* Article */}
-      <div className="prose prose-gray max-w-none text-[17px] leading-relaxed">
-        {blog.content.split("\n").map((line, i) => (
-          <p key={i}>{line}</p>
-        ))}
-      </div>
-
-      {/* Footer */}
-      <div className="mt-16 pt-8 border-t flex justify-between items-center">
-
-        <Link
-          href="/blogs"
-          className="text-sm text-gray-600 hover:text-gray-900 transition"
-        >
-          ← Back to blogs
-        </Link>
-
-        <span className="text-xs text-gray-400">
-          Thanks for reading
-        </span>
-      </div>
-    </div>
-
-    {/* Bottom spacing */}
-    <div className="h-24" />
-  </article>
-);
-
+    </article>
+  );
 }

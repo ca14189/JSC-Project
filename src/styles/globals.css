@@ -261,4 +261,13 @@
   .animated-underline:focus-visible {
     background-size: 0 2px, 100% 2px;
   }
+  @layer components {
+  .blog-content img {
+    @apply block mx-auto my-8 max-w-[700px] h-auto;
+  }
+}
+
+
+
+
 }
