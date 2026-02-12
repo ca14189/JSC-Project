@@ -1,309 +1,201 @@
 "use client";
 
+import { motion } from "framer-motion";
 import Image from "next/image";
-import { Linkedin, Mail } from "lucide-react";
+import { FaLinkedinIn } from "react-icons/fa";
 
-type TeamMember = {
+/* ================= TYPES ================= */
+
+type ContentItem = {
+  type: "text" | "media";
+  data?: string;
+  media_ref?: string;
+};
+
+interface OurTeamProps {
+  contents: ContentItem[];
+}
+
+interface Team {
   name: string;
   role: string;
   image: string;
-  bio: string;
-  linkedin?: string;
-  email?: string;
-};
+  description: string;
+  linkedin: string;
+}
 
-const team1: TeamMember[] = [
-  {
-    name: "Rajneesh Srivastav",
-    role: "Co Founder",
-    image: "/images/dummyUser.png",
-    bio: "A rare blend of deep engineering and clear product vision. Turns complex AI systems into scalable, real-world solutions. The kind of co-founder every serious tech venture needs.",
-    linkedin: "#",
-    email: "mailto:hello@example.com",
-  },
-  {
-    name: "Rajneesh Srivastav",
-    role: "Co Founder",
-    image: "/images/dummyUser.png",
-    bio: "Focused on building meaningful products that create long-term impact through innovation and strong values.",
-    linkedin: "#",
-    email: "mailto:hello@example.com",
-  },
+/* ================= LINKEDIN URLS ================= */
+
+const team1Linkedin = [
+  "https://www.linkedin.com/in/jschamps/",
+  "https://www.linkedin.com/in/pradip-madheshiya/",
 ];
 
-const team2: TeamMember[] = [
-  {
-    name: "Sarthak Deb",
-    role: "Full Stack AI Engineer",
-    image: "/images/dummyUser.png",
-    bio: "Focused on building meaningful products that create long-term impact through innovation and strong values.",
-    linkedin: "#",
-    email: "mailto:hello@example.com",
-  },
-  {
-    name: "Suryanshu Pal",
-    role: "Full Stack AI Engineer",
-    image: "/images/dummyUser.png",
-    bio: "Drives growth by connecting people with solutions that truly improve how businesses operate.",
-    linkedin: "#",
-    email: "mailto:hello@example.com",
-  },
-  {
-    name: "Siddhant Kumar",
-    role: "Full Stack AI Engineer",
-    image: "/images/dummyUser.png",
-    bio: "Focused on building meaningful products that create long-term impact through innovation and strong values.",
-    linkedin: "#",
-    email: "mailto:hello@example.com",
-  },
-  {
-    name: "Prashant Kumar",
-    role: "DevSecOps Engineer",
-    image: "/images/dummyUser.png",
-    bio: "Drives growth by connecting people with solutions that truly improve how businesses operate.",
-    linkedin: "#",
-    email: "mailto:hello@example.com",
-  },
-  {
-    name: "Pradip Madheshiya",
-    role: "Full Stack AI Engineer",
-    image: "/images/dummyUser.png",
-    bio: "Focused on building meaningful products that create long-term impact through innovation and strong values.",
-    linkedin: "#",
-    email: "mailto:pradip.jschamp@gmail.com",
-  },
-  {
-    name: "Adarsh Bhargav",
-    role: "Full Stack AI Engineer",
-    image: "/images/dummyUser.png",
-    bio: "Drives growth by connecting people with solutions that truly improve how businesses operate.",
-    linkedin: "#",
-    email: "mailto:hello@example.com",
-  },
-  {
-    name: "Ankur Jaiswal",
-    role: "Full Stack AI Engineer",
-    image: "/images/dummyUser.png",
-    bio: "Focused on building meaningful products that create long-term impact through innovation and strong values.",
-    linkedin: "#",
-    email: "mailto:hello@example.com",
-  },
+const team2Linkedin = [
+  "https://www.linkedin.com/in/adarsh-bhargav-7645b8332/",
+  "https://www.linkedin.com/in/pradip-kumar-madheshiya-pradip",
+  "https://www.linkedin.com/in/ankur-jaiswal-69a40a397/",
+  "https://www.linkedin.com/in/team3-member1/",
+  "https://www.linkedin.com/in/suryanshu-pal/",
+  "https://www.linkedin.com/in/team3-member2/",
+  "https://www.linkedin.com/in/prashant-kumar-3742b227b",
 ];
 
-const team3: TeamMember[] = [
-  {
-    name: "Sonali Arya",
-    role: "HR/Admin Manager",
-    image: "/images/dummyUser.png",
-    bio: "Focused on building meaningful products that create long-term impact through innovation and strong values.",
-    linkedin: "#",
-    email: "mailto:hello@example.com",
-  },
-  {
-    name: "Nitesh Gupta",
-    role: "UX Lead",
-    image: "/images/dummyUser.png",
-    bio: "Drives growth by connecting people with solutions that truly improve how businesses operate.",
-    linkedin: "#",
-    email: "mailto:hello@example.com",
-  },
+const team3Linkedin = [
+  "https://www.linkedin.com/in/nitesh-gupta-213479387/",
+  "https://www.linkedin.com/in/sonali-jschamps/",
 ];
 
-export default function TeamSection() {
-  return (
-    <section className="relative py-24 bg-gradient-to-b from-slate-50 to-white">
-      <div className="max-w-7xl mx-auto px-4">
-        {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <h2 className="text-4xl font-bold tracking-tight text-slate-900">
-            Meet the People Behind the Vision
-          </h2>
-          <p className="mt-4 text-slate-600 text-lg">
-            A passionate team dedicated to building smart, reliable, and
-            future-ready solutions for modern businesses.
+/* ================= CARD UI ================= */
+
+const TeamGrid = ({ data }: { data: Team[] }) => (
+  <div className="flex flex-wrap gap-8 mt-10 justify-center">
+    {data.map((m, i) => (
+      <motion.div
+        key={i}
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: i * 0.08 }}
+        whileHover={{ scale: 1.04 }}
+        className="group w-72 max-w-sm rounded-3xl overflow-hidden 
+        bg-white/70 backdrop-blur-lg border border-gray-200 
+        shadow-md hover:shadow-2xl transition-all duration-300"
+      >
+        {/* Image */}
+        <div className="relative h-72 w-full overflow-hidden">
+          <Image
+            src={m.image}
+            alt={m.name}
+            fill
+            className="object-cover object-top group-hover:scale-110 transition duration-500"
+          />
+
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-70" />
+        </div>
+
+        {/* Content */}
+        <div className="p-6 text-left">
+          <h3 className="text-2xl font-bold text-gray-900">
+            {m.name}
+          </h3>
+
+          <p className="text-sm font-semibold text-brandlight mt-1">
+            {m.role}
           </p>
+
+          <p className="mt-3 text-gray-600 text-sm leading-relaxed">
+            {m.description}
+          </p>
+
+          {/* Linkedin */}
+          {m.linkedin && (
+            <a
+              href={m.linkedin}
+              target="_blank"
+              className="mt-5 inline-flex items-center gap-2 
+              px-4 py-2 rounded-full text-sm font-medium
+              bg-brandlight text-white shadow-md
+              hover:bg-black hover:scale-105 transition"
+            >
+              <FaLinkedinIn size={16} />
+              LinkedIn
+            </a>
+          )}
+        </div>
+      </motion.div>
+    ))}
+  </div>
+);
+
+/* ================= COMPONENT ================= */
+
+const OurTeam: React.FC<OurTeamProps> = ({ contents }) => {
+  if (!contents || contents.length === 0)
+    return <p className="text-center py-20">Contents not found</p>;
+
+  /* ---------- HERO TEXT ---------- */
+  const welcomeHeading = contents.find((c) => c.type === "text")?.data;
+  const welcomePara = contents.find(
+    (c, i) => c.type === "text" && i > 0
+  )?.data;
+
+  /* ---------- HELPER ---------- */
+  const extractTeam = (
+    startIndex: number,
+    count: number,
+    linkedinArr: string[]
+  ): Team[] => {
+    const team: Team[] = [];
+    let li = 0;
+    let i = startIndex;
+
+    while (team.length < count && i < contents.length) {
+      if (contents[i].type === "media") {
+        team.push({
+          image: contents[i].media_ref || "/images/dummyUser.png",
+          name: contents[i + 1]?.data || "",
+          role: contents[i + 2]?.data || "",
+          description: contents[i + 3]?.data || "",
+          linkedin: linkedinArr[li] || "#",
+        });
+        li++;
+        i += 4;
+      } else {
+        i++;
+      }
+    }
+    return team;
+  };
+
+  /* ---------- SECTIONS ---------- */
+  const team1 = extractTeam(3, 2, team1Linkedin);
+  const team2 = extractTeam(11, 7, team2Linkedin);
+  const team3 = extractTeam(39, 2, team3Linkedin);
+
+  return (
+    <section className="py-28 bg-gradient-to-br from-slate-50 via-white to-slate-100">
+      <div className="max-w-7xl mx-auto px-6 text-center">
+
+        {/* Heading */}
+        <motion.h2
+          initial={{ opacity: 0, y: -25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-5xl font-extrabold text-gray-900"
+        >
+          {welcomeHeading}
+        </motion.h2>
+
+        <p className="mt-5 max-w-2xl mx-auto text-gray-600 text-lg leading-relaxed">
+          {welcomePara}
+        </p>
+
+        {/* Sections */}
+        <div className="mt-20">
+          <h3 className="text-3xl font-bold text-brandlight">
+            Leadership Team
+          </h3>
+          <TeamGrid data={team1} />
         </div>
 
-        <h3 className="text-center text-2xl font-semibold text-brandlight">Leadership Team</h3>
-
-        {/* Team Grid */}
-        <div className="flex justify-center flex-wrap gap-4 mt-6">
-          {team1.map((member, index) => (
-            <div
-              key={index}
-              className="group relative bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden w-72"
-            >
-              {/* Image */}
-              <div className="relative h-72 w-full overflow-hidden">
-                <Image
-                  src={member.image}
-                  alt={member.name}
-                  fill
-                  className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-              </div>
-
-              {/* Content */}
-              <div className="p-6 relative">
-                <h3 className="text-xl font-semibold text-slate-900">
-                  {member.name}
-                </h3>
-                <p className="text-brandlight font-semibold mt-1">
-                  {member.role}
-                </p>
-
-                <p className="mt-4 text-slate-600 leading-relaxed text-sm">
-                  {member.bio}
-                </p>
-
-                {/* Actions */}
-                <div className="mt-6 flex items-center gap-4">
-                  {member.linkedin && (
-                    <a
-                      href={member.linkedin}
-                      className="p-2 rounded-full bg-slate-100 hover:bg-brandlight hover:text-white transition"
-                    >
-                      <Linkedin size={18} />
-                    </a>
-                  )}
-                  {member.email && (
-                    <a
-                      href={member.email}
-                      className="p-2 rounded-full bg-slate-100 hover:bg-brandlight hover:text-white transition"
-                    >
-                      <Mail size={18} />
-                    </a>
-                  )}
-                </div>
-              </div>
-
-              {/* Accent line */}
-              <div className="absolute bottom-0 left-0 h-1 w-0 bg-brandlight group-hover:w-full transition-all duration-500" />
-            </div>
-          ))}
+        <div className="mt-24">
+          <h3 className="text-3xl font-bold text-brandlight">
+            AI/ML Development Team
+          </h3>
+          <TeamGrid data={team2} />
         </div>
 
-        <h3 className="text-center text-2xl font-semibold text-brandlight mt-16">AI/ML Development Team</h3>
-
-        {/* Team Grid */}
-        <div className="flex justify-center flex-wrap gap-4 mt-6">
-          {team2.map((member, index) => (
-            <div
-              key={index}
-              className="group relative bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden w-72"
-            >
-              {/* Image */}
-              <div className="relative h-72 w-full overflow-hidden">
-                <Image
-                  src={member.image}
-                  alt={member.name}
-                  fill
-                  className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-              </div>
-
-              {/* Content */}
-              <div className="p-6 relative">
-                <h3 className="text-xl font-semibold text-slate-900">
-                  {member.name}
-                </h3>
-                <p className="text-brandlight font-semibold mt-1">
-                  {member.role}
-                </p>
-
-                <p className="mt-4 text-slate-600 leading-relaxed text-sm">
-                  {member.bio}
-                </p>
-
-                {/* Actions */}
-                <div className="mt-6 flex items-center gap-4">
-                  {member.linkedin && (
-                    <a
-                      href={member.linkedin}
-                      className="p-2 rounded-full bg-slate-100 hover:bg-brandlight hover:text-white transition"
-                    >
-                      <Linkedin size={18} />
-                    </a>
-                  )}
-                  {member.email && (
-                    <a
-                      href={member.email}
-                      className="p-2 rounded-full bg-slate-100 hover:bg-brandlight hover:text-white transition"
-                    >
-                      <Mail size={18} />
-                    </a>
-                  )}
-                </div>
-              </div>
-
-              {/* Accent line */}
-              <div className="absolute bottom-0 left-0 h-1 w-0 bg-brandlight group-hover:w-full transition-all duration-500" />
-            </div>
-          ))}
-        </div>
-
-        <h3 className="text-center text-2xl font-semibold text-brandlight mt-16">Admin and HR Team</h3>
-
-        {/* Team Grid */}
-        <div className="flex justify-center flex-wrap gap-4 mt-6">
-          {team3.map((member, index) => (
-            <div
-              key={index}
-              className="group relative bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden w-72"
-            >
-              {/* Image */}
-              <div className="relative h-72 w-full overflow-hidden">
-                <Image
-                  src={member.image}
-                  alt={member.name}
-                  fill
-                  className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-              </div>
-
-              {/* Content */}
-              <div className="p-6 relative">
-                <h3 className="text-xl font-semibold text-slate-900">
-                  {member.name}
-                </h3>
-                <p className="text-brandlight font-semibold mt-1">
-                  {member.role}
-                </p>
-
-                <p className="mt-4 text-slate-600 leading-relaxed text-sm">
-                  {member.bio}
-                </p>
-
-                {/* Actions */}
-                <div className="mt-6 flex items-center gap-4">
-                  {member.linkedin && (
-                    <a
-                      href={member.linkedin}
-                      className="p-2 rounded-full bg-slate-100 hover:bg-brandlight hover:text-white transition"
-                    >
-                      <Linkedin size={18} />
-                    </a>
-                  )}
-                  {member.email && (
-                    <a
-                      href={member.email}
-                      className="p-2 rounded-full bg-slate-100 hover:bg-brandlight hover:text-white transition"
-                    >
-                      <Mail size={18} />
-                    </a>
-                  )}
-                </div>
-              </div>
-
-              {/* Accent line */}
-              <div className="absolute bottom-0 left-0 h-1 w-0 bg-brandlight group-hover:w-full transition-all duration-500" />
-            </div>
-          ))}
+        <div className="mt-24">
+          <h3 className="text-3xl font-bold text-brandlight">
+            Admin & HR Team
+          </h3>
+          <TeamGrid data={team3} />
         </div>
       </div>
     </section>
   );
-}
+};
+
+export default OurTeam;

@@ -97,18 +97,18 @@ const navMenuItems: NavbarItem[] = safeNavbarData.slice(1).map((item) => {
                     alt="Logo"
                     width={200}
                     height={50}
-                    className="h-13 w-48 xl:w-48 cursor-pointer"
+                    className="h-13 w-48 xl:w-48 cursor-pointer mr-2"
                   />)}
               </Link>
             ) : (
-              <div>
+              <div className='mr-4'>
                 {navLogo && (
                   <Image
                     src={navLogo}
                     alt="Logo"
                     width={200}
                     height={50}
-                    className="h-13 w-48 xl:w-48"
+                    className="h-13 w-48 xl:w-48 cursor-pointer"
                   />
                 )}
               </div>
