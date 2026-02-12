@@ -1,15 +1,61 @@
-// const path = require("path");
+// // const path = require("path");
+
+// /** @type {import('next').NextConfig} */
+// const nextConfig = {
+//   reactStrictMode: true,
+
+//   // Turbopack enable (required in Next.js 16)
+//   turbopack: {},
+
+//   // Image configuration (replaces deprecated images.domains)
+//   // images: {
+//   //   remotePatterns: [
+//   //     {
+//   //       protocol: "https",
+//   //       hostname: "ik.imagekit.io",
+//   //       pathname: "/**",
+//   //     },
+//   //   ],
+//   // },
+//    images: {
+//     remotePatterns: [
+//       {
+//         protocol: "http",
+//         hostname: "localhost",
+//         port: "3001",
+//       },
+//     ],
+//   },
+
+//   // Aliases supported by Turbopack
+//   experimental: {
+//     // Required for alias + external packages compatibility
+//     serverComponentsExternalPackages: ["@svgr/webpack"],
+//   },
+  
+// };
+
+// module.exports = nextConfig;
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
 
-  // Turbopack enable (required in Next.js 16)
+  // Required for Next.js 16 (Turbopack)
   turbopack: {},
 
-  // Image configuration (replaces deprecated images.domains)
+  // Allow external images
   images: {
     remotePatterns: [
+      // Local API images (blogs thumbnails / cover images)
+      {
+        protocol: "http",
+        hostname: "localhost",
+        port: "3001",
+        pathname: "/**",
+      },
+
+      // ImageKit CDN (logo, CMS images, etc.)
       {
         protocol: "https",
         hostname: "ik.imagekit.io",
@@ -18,11 +64,11 @@ const nextConfig = {
     ],
   },
 
-  // Aliases supported by Turbopack
+  // Experimental settings (safe for your use case)
   experimental: {
-    // Required for alias + external packages compatibility
     serverComponentsExternalPackages: ["@svgr/webpack"],
   },
 };
 
 module.exports = nextConfig;
+
