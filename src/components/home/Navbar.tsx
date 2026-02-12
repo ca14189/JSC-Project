@@ -6,6 +6,8 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useRouter } from "next/navigation";
 import * as gtag from '@/lib/gtag';
+import { FaBars, FaTimes } from 'react-icons/fa';
+
 
 interface BaseNavbarItem {
   data: string;
@@ -118,9 +120,9 @@ const navMenuItems: NavbarItem[] = safeNavbarData.slice(1).map((item) => {
             <div className="ml-auto lg:hidden">
               <button
                 onClick={toggleMenu}
-                className="text-5xl font-extrabold hover:shadow-xl"
+                className="text-xl font-extrabold hover:shadow-xl"
               >
-                &#8801;
+                {menuOpen ? <FaTimes className="text-black" /> : <FaBars className="text-black" />}
               </button>
             </div>
 
