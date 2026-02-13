@@ -1,37 +1,35 @@
 /** @type {import('next-sitemap').IConfig} */
 
-const baseUrl = 'https://www.jschamps.com';
+const baseUrl = "https://www.jschamps.com";
 
 const pages = [
-  '/',
-  '/about-fullstack-development',
-  '/hire-fullstack-developer',
-  '/how-fullstack-development-learning-works',
-  '/fullstack-development-learning',
-  '/software-development-learning-kushinagar',
-  '/software-development-learning-lucknow',
+  "/",
+  "/about-fullstack-development",
+  "/hire-fullstack-developer",
+  "/how-fullstack-development-learning-works",
+  "/fullstack-development-learning",
+  "/blogs",
+  "/software-development-learning-kushinagar",
+  "/software-development-learning-lucknow",
+  "/software-development-learning-maihar",
+  "/our-team",
+  "/fullstack-developer-job",
+  "/fullstack-developer-login",
 ];
 
 module.exports = {
   siteUrl: baseUrl,
   generateRobotsTxt: true,
-  sitemapSize: 5000,
-  robotsTxtOptions: {
-    policies: [{ userAgent: '*', allow: '/' }],
-  },
-  additionalPaths: async (config) => {
+
+  // prevent auto generation of same pages
+  exclude: pages,
+
+  additionalPaths: async () => {
     return pages.map((route) => ({
       loc: `${baseUrl}${route}`,
-      changefreq: 'monthly',
+      changefreq: "monthly",
       priority: 0.7,
       lastmod: new Date().toISOString(),
     }));
   },
 };
-
-// /** @type {import('next-sitemap').IConfig} */
-// module.exports = {
-//   siteUrl: 'https://www.jschamps.com',
-//   generateRobotsTxt: true,
-//   output: 'export',
-// }
