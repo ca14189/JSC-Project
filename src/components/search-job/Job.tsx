@@ -371,7 +371,7 @@ export default function SearchJobPage() {
   // Type Filter
   if (type) {
     result = result.filter((job) =>
-      job.jobType?.toLowerCase() === type.toLowerCase()
+      job.type?.toLowerCase() === type.toLowerCase()
     );
   }
 
@@ -578,16 +578,17 @@ export default function SearchJobPage() {
                         </div>
 
                         <div>
-                          <h3 className="text-lg font-semibold text-gray-900 group-hover:text-orange-600 transition">
-                            {job.title}
-                          </h3>
+                         <h3 className="text-lg font-semibold text-gray-900 group-hover:text-orange-600 transition overflow-hidden text-ellipsis leading-6 h-[3rem]">
+  {job.title}
+</h3>
+
                           <p className="text-sm text-gray-600">
                             {job.company}
                           </p>
                         </div>
                       </div>
 
-                      <button
+                      {/* <button
                         className="text-gray-600 hover:text-orange-600 transition"
                         onClick={(e) => {
                           e.preventDefault();
@@ -598,7 +599,7 @@ export default function SearchJobPage() {
                         }}
                       >
                         {isSaved ? <FaBookmark /> : <FaRegBookmark />}
-                      </button>
+                      </button> */}
                     </div>
 
                     <div className="mt-4 text-sm text-gray-600 space-y-2">
