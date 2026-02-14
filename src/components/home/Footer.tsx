@@ -76,13 +76,13 @@ const links = footerDetailsData.slice(8);
               {/* Second Column */}
               <ul className="space-y-2 mt-4 md:mt-0 text-center md:text-left">
                 <li className="hover:text-brandlight cursor-pointer">
-                  <Link href="/fullstack-ai-development">Full Stack AI Development</Link>
-                </li>
-                <li className="hover:text-brandlight cursor-pointer">
                   <Link href="/blogs">Blogs</Link>
                 </li>
                 <li className="hover:text-brandlight cursor-pointer">
                   <Link href="/our-team">Our Team</Link>
+                </li>
+                <li className="hover:text-brandlight cursor-pointer">
+                  <Link href="/fullstack-developer-job">Search for Job</Link>
                 </li>
                 <li className="hover:text-brandlight cursor-pointer">
                   Contact Us
@@ -92,6 +92,9 @@ const links = footerDetailsData.slice(8);
                   </ul>
                 </li>
               </ul>
+            </div>
+            <div className="hover:text-brandlight cursor-pointer w-full mt-4 text-center">
+              <Link href="/fullstack-ai-development">Full Stack AI Development</Link>
             </div>
           </div>
 

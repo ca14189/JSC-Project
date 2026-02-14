@@ -67,7 +67,7 @@ const HowItWorks = ({ howItWorkData }: HowItWorksItems) => {
         </div>
 
         {/* Floating Box */}
-        <div className="w-[400px] bg-brandlight h-auto rounded-3xl px-3 py-2 mt-16 md:absolute right-0 sm:bottom-0 md:bottom-1 lg:bottom-7 xl:bottom-10 md:left-[330px] xl:left-[500px]">
+        <div className="w-[400px] bg-brandlight h-auto rounded-3xl px-3 py-2 mt-16 right-0 sm:bottom-0 md:bottom-1 lg:bottom-7 xl:bottom-10 md:left-[330px] xl:left-[500px]">
           <p className="text-grayLight border-b border-grayLight text-2xl sm:text-3xl font-bold text-center">
             {howItWorkData?.[5]?.data}
           </p>

@@ -132,7 +132,7 @@ const BecomeChampion = ({ becomeChampion }: BecomeChampionProps) => {
 
       {/* Paragraph */}
       <p
-        className={`mt-5 text-xs sm:text-sm md:text-base lg:text-lg tracking-tight max-w-xl mx-auto`}
+        className={`mt-5 text-md sm:text-sm md:text-base lg:text-lg tracking-tight max-w-xl mx-auto`}
       >
         {paragraph}
       </p>
