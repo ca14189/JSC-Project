@@ -50,7 +50,7 @@ export default async function BlogDetailsPage({ slug }: Props) {
 </h1>
 
 {/* Author + date section */}
-<div className="flex items-center gap-3 mb-10">
+<div className="flex items-center gap-3">
   <Image
     src="/images/dummyUser.png"
     alt={blog.author}

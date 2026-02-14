@@ -9,7 +9,7 @@ const TopTools: React.FC<TopToolsSectionProps> = ({ topToolsSectionData }) => {
   const Images = topToolsSectionData?.slice(2);
   return (
     <div>
-      <div className='max-w-3xl lg:max-w-4xl xl:max-w-[100%] xl:mx-28 mt-10 text-center'>
+      <div className='max-w-3xl lg:max-w-4xl xl:max-w-[100%] xl:mx-28 mt-10 text-center px-4'>
         <p className='headingGlobal lg:text-[40px]  text-brandZinc  font-extrabold xl:my-2'>
           {topToolsSectionData?.[0]?.data ?? ''}
         </p>
