@@ -26,24 +26,22 @@ interface Team {
 
 /* ================= LINKEDIN URLS ================= */
 
-const team1Linkedin = [
+const teamLinkedin = [
   "https://www.linkedin.com/in/jschamps/",
-  "https://www.linkedin.com/in/pradip-madheshiya/",
-];
-
-const team2Linkedin = [
-  "https://www.linkedin.com/in/adarsh-bhargav-7645b8332/",
-  "https://www.linkedin.com/in/pradip-kumar-madheshiya-pradip",
-  "https://www.linkedin.com/in/ankur-jaiswal-69a40a397/",
-  "https://www.linkedin.com/in/team3-member1/",
+  "https://www.linkedin.com/404/",     //sarthak sir
   "https://www.linkedin.com/in/suryanshu-pal/",
-  "https://www.linkedin.com/in/team3-member2/",
+  "https://www.linkedin.com/404/",    //sidhant 
   "https://www.linkedin.com/in/prashant-kumar-3742b227b",
-];
-
-const team3Linkedin = [
-  "https://www.linkedin.com/in/nitesh-gupta-213479387/",
+  "https://www.linkedin.com/in/pradip-kumar-madheshiya-pradip",
+  "https://www.linkedin.com/in/adarsh-bhargav-7645b8332/",
+  "https://www.linkedin.com/in/ankur-jaiswal-69a40a397/",
+  "https://www.linkedin.com/in/singhshalud/",
+  "https://www.linkedin.com/404/",    //harshit
+  "https://www.linkedin.com/404/",    //nikhil
+  "https://www.linkedin.com/404/",    //hilal
   "https://www.linkedin.com/in/sonali-jschamps/",
+  "https://www.linkedin.com/404/",    // manya
+  "https://www.linkedin.com/in/nitesh-gupta-213479387/",
 ];
 
 /* ================= CARD UI ================= */
@@ -112,6 +110,7 @@ const TeamGrid = ({ data }: { data: Team[] }) => (
 /* ================= COMPONENT ================= */
 
 const OurTeam: React.FC<OurTeamProps> = ({ contents }) => {
+  // console.log("Contents:", contents);
   if (!contents || contents.length === 0)
     return <p className="text-center py-20">Contents not found</p>;
 
@@ -150,12 +149,10 @@ const OurTeam: React.FC<OurTeamProps> = ({ contents }) => {
   };
 
   /* ---------- SECTIONS ---------- */
-  const team1 = extractTeam(3, 2, team1Linkedin);
-  const team2 = extractTeam(11, 7, team2Linkedin);
-  const team3 = extractTeam(39, 2, team3Linkedin);
+  const team1 = extractTeam(2, 15, teamLinkedin);
 
   return (
-    <section className="py-28 bg-gradient-to-br from-slate-50 via-white to-slate-100">
+    <section className="py-28 bg-gradient-to-br from-slate-50 via-white to-slate-100 -mb-10">
       <div className="max-w-7xl mx-auto px-6 text-center">
 
         {/* Heading */}
@@ -174,24 +171,7 @@ const OurTeam: React.FC<OurTeamProps> = ({ contents }) => {
 
         {/* Sections */}
         <div className="mt-20">
-          <h3 className="text-3xl font-bold text-brandlight">
-            Leadership Team
-          </h3>
           <TeamGrid data={team1} />
-        </div>
-
-        <div className="mt-24">
-          <h3 className="text-3xl font-bold text-brandlight">
-            AI/ML Development Team
-          </h3>
-          <TeamGrid data={team2} />
-        </div>
-
-        <div className="mt-24">
-          <h3 className="text-3xl font-bold text-brandlight">
-            Admin & HR Team
-          </h3>
-          <TeamGrid data={team3} />
         </div>
       </div>
     </section>

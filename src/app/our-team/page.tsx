@@ -19,7 +19,7 @@ domain: string;
 
 async function getData() {
   const domain = "jschamps.com";
-  const group = "OurTeam";
+  const group = "ourTeam";
 
   const url = `${process.env.NEXT_PUBLIC_BASE_URL}/cms-static?domain=${domain}&group=${group}`;
   const res = await fetch(url, { cache: "no-store" });
