@@ -11,7 +11,7 @@ export default async function BlogDetailsPage({ slug }: Props) {
   const decodedSlug = decodeURIComponent(slug);
 
   const res = await fetch(
-    `http://localhost:3001/api/cms/blog/${decodedSlug}?domain=jschamps.com`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/blog/${decodedSlug}?domain=jschamps.com`,
     { cache: "no-store" }
   );
 
