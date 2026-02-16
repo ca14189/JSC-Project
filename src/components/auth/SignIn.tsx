@@ -4,11 +4,9 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { login } from "../../api/action";
 import Notifier from "@/utils/notify";
 import { FaRegEye } from "react-icons/fa";
 import { IoMdEyeOff } from "react-icons/io";
-import { setTokenCookie } from "../../utils/setTokenCookie";
 
 export const loginSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Email is required"),
@@ -41,14 +39,28 @@ const SignIn = () => {
               // } else {
               //   Notifier.error(res.message || "Invalid credentials");
               // }
-              const res = await login(values);
+              const res = await fetch("/api/auth/login", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(values),
+              });
 
-if (res.success && res.data?.accessToken) {
-  setTokenCookie(res.data.accessToken);
-  router.push("/dashboard");
-} else {
-  Notifier.error(res.message || "Invalid credentials");
-}
+              const resData = await res.json();
+
+              if (!resData.success) {
+                Notifier.error(resData.message || "Login failed!");
+                return;
+              }
+
+              // OTP flow
+              if (resData.status === "otp_sent") {
+                sessionStorage.setItem("loginData", JSON.stringify(values));
+                Notifier.success(resData.message || "OTP sent to your email!");
+                router.push("/verify-otp");
+                return;
+              }
 
             } catch (err: any) {
               Notifier.error(err?.message || "Login failed! Please try again.");
@@ -106,9 +118,9 @@ if (res.success && res.data?.accessToken) {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-orange-500 text-white py-2 rounded-md font-medium hover:bg-orange-600 transition disabled:opacity-50"
+                className="w-full bg-orange-500 text-white py-2 rounded-md font-medium hover:bg-orange-600 transition disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {isSubmitting ? "Logging in..." : "Login"}
+                {isSubmitting ? "Sending..." : "Send OTP"}
               </button>
             </Form>
           )}
