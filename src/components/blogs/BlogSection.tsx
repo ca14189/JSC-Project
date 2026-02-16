@@ -5,7 +5,7 @@ async function getBlogData() {
   const group = 'layout';
 
   const res = await fetch(
-    `http://localhost:3001/api/cms/blogs-by-domain?domain=jschamps.com`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/blogs-by-domain?domain=jschamps.com`,
     { next: { revalidate: 60 } }
   );
 
