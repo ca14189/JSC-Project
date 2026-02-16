@@ -46,7 +46,7 @@ export async function generateMetadata(): Promise<Metadata> {
 async function getJobBySlug(slug: string) {
   console.log("Fetching job with slug:", slug);
 
-  const res = await fetch(`http://localhost:3001/api/cms/jobs/${slug}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/jobs/${slug}`, {
     cache: "no-store",
   });
 
