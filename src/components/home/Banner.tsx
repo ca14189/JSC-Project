@@ -105,11 +105,11 @@ const Banner = ({ headerData }: BannerProps) => {
 
         // ===change==
         style={{
-  maxWidth: screenSize === 'medium' ? '720px' : '100%',
-  marginLeft: screenSize === 'medium' || screenSize === 'small' ? 'auto' : 0,
-  marginRight: screenSize === 'medium' || screenSize === 'small' ? 'auto' : 0,
-  textAlign: screenSize === 'small' ? 'center' : 'left',
-}}
+          maxWidth: screenSize === 'medium' ? '720px' : '100%',
+          marginLeft: screenSize === 'medium' || screenSize === 'small' ? 'auto' : 0,
+          marginRight: screenSize === 'medium' || screenSize === 'small' ? 'auto' : 0,
+          textAlign: screenSize === 'small' ? 'center' : 'left',
+        }}
 
       >
         <div className="max-w-5xl ">
@@ -147,8 +147,8 @@ const Banner = ({ headerData }: BannerProps) => {
           )}
 
           <p
-            className={`font-extralight text-grayLight mt-5 sm:mt-3 md:mt-4 lg:mt-5 max-w-full ${screenSize === 'small'
-              ? 'text-xs sm:text-sm md:text-base mx-auto text-justify'
+            className={`text-grayLight mt-5 sm:mt-3 md:mt-4 lg:mt-5 max-w-full ${screenSize === 'small'
+              ? 'text-md sm:text-sm md:text-base mx-auto text-justify'
               : screenSize === 'medium'
                 ? 'text-sm sm:text-base md:text-lg text-justify'
                 : 'text-lg max-w-xl text-justify'

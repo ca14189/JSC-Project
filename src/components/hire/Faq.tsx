@@ -8,7 +8,7 @@ const Faq: React.FC<FaqSectionProps> = ({ FaqSectionData }) => {
   const faqData = FaqSectionData?.slice(3) ?? []
   return (
     <div>
-      <div className="flex flex-wrap w-full mt-10 md:mt-20 md:justify-center">
+      <div className="flex flex-wrap w-full mt-10 md:mt-20 md:justify-center px-4">
 
         <div className='md:mr-[100px]' >
           <div className="w-full md:w-[330px] mt-6">

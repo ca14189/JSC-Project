@@ -34,7 +34,7 @@ export default async function BlogSection() {
         </div>
 
         {/* Grid */}
-         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 mt-8">
+         <div className="flex flex-wrap gap-8 mt-8 justify-center">
           {data.map((blog: any) => (
             <BlogCard key={blog.slug} blog={blog} />
           ))}

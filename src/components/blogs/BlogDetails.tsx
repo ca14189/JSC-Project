@@ -28,7 +28,7 @@ export default async function BlogDetailsPage({ slug }: Props) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center">
         <p className="text-gray-600">Blog not found.</p>
-        <Link href="/blogs" className="mt-6 underline">
+        <Link href="/blogs" className="mt-6 underline hover:text-gray-800">
           Back to Blogs
         </Link>
       </div>
@@ -50,7 +50,7 @@ export default async function BlogDetailsPage({ slug }: Props) {
 </h1>
 
 {/* Author + date section */}
-<div className="flex items-center gap-3 mb-10">
+<div className="flex items-center gap-3">
   <Image
     src="/images/dummyUser.png"
     alt={blog.author}
@@ -101,13 +101,13 @@ export default async function BlogDetailsPage({ slug }: Props) {
           dangerouslySetInnerHTML={{ __html: blog.content }}
         /> */}
         <div
-  className="blog-content"
-  dangerouslySetInnerHTML={{ __html: blog.content }}
-/>
+          className="blog-content"
+          dangerouslySetInnerHTML={{ __html: blog.content }}
+        />
 
 
         <div className="mt-16 border-t pt-8">
-          <Link href="/blogs" className="text-sm text-gray-600">
+          <Link href="/blogs" className="text-sm text-gray-600 hover:text-gray-800">
             ← Back to blogs
           </Link>
         </div>
