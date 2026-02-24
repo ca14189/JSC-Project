@@ -9,7 +9,7 @@ RUN npm install
 
 # Copy rest of project
 COPY . .
-
+COPY .env* ./
 RUN npm run build
 
 FROM node:20-alpine AS runner
