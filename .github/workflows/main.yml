@@ -3,7 +3,7 @@ name: Deploy Next.js to JSC-VPS
 on:
   push:
     branches:
-      - tariq
+      - main
 
 jobs:
   deploy:
