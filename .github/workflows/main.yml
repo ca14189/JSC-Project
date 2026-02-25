@@ -22,20 +22,20 @@ jobs:
       - name: Copy image to VPS
         uses: appleboy/scp-action@v0.1.7
         with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
-          key: ${{ secrets.VPS_SSH_KEY }}
-          port: ${{ secrets.VPS_PORT }}
+          host: ${{ secrets.JSC_HOST }}
+          username: ${{ secrets.JSC_USER }}
+          key: ${{ secrets.JSC_SSH_KEY }}
+          port: ${{ secrets.JSC_PORT }}
           source: "nextjs-app.tar"
           target: "~/"
 
       - name: Deploy on VPS
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
-          key: ${{ secrets.VPS_SSH_KEY }}
-          port: ${{ secrets.VPS_PORT }}
+          host: ${{ secrets.JSC_HOST }}
+          username: ${{ secrets.JSC_USER }}
+          key: ${{ secrets.JSC_SSH_KEY }}
+          port: ${{ secrets.JSC_PORT }}
           script: |
             docker image prune -f || true
 
