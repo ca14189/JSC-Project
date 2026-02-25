@@ -8,21 +8,18 @@ RUN npm config set registry https://registry.npmjs.org/ \
  && npm ci
 
 COPY . .
+COPY .env.production .env.production
 
 RUN npm run build
 
 
-# ---------- Production image ----------
 FROM node:20-alpine AS runner
 
 WORKDIR /app
 ENV NODE_ENV=production
 
-# Copy standalone build only (small image)
-COPY --from=builder /app/.next/standalone ./
-COPY --from=builder /app/.next/static ./.next/static
-COPY --from=builder /app/public ./public
+COPY --from=builder /app ./
 
 EXPOSE 3000
 
-CMD ["node", "server.js"]
+CMD ["npm", "start"]
