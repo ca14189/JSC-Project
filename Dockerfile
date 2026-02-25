@@ -5,7 +5,8 @@ WORKDIR /app
 # Copy package files first (cache optimization)
 COPY package*.json ./
 
-RUN npm install
+RUN npm config set registry https://registry.npmjs.org/ \
+ && npm ci
 
 # Copy rest of project
 COPY . .
