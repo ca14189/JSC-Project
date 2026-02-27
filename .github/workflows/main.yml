@@ -1,4 +1,4 @@
-name: Deploy Next.js to JSC-VPS
+name: Deploy Next.js to JSC-VPS-SERVER
 
 on:
   push:
