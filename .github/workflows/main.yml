@@ -28,6 +28,7 @@ jobs:
           port: ${{ secrets.JSC_PORT }}
           source: "nextjs-app.tar"
           target: "~/"
+          debug: true
 
       - name: Deploy on VPS
         uses: appleboy/ssh-action@v1.0.3
