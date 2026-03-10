@@ -2,15 +2,16 @@ FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-# Copy package files first (cache optimization)
 COPY package*.json ./
 
-RUN npm install
+RUN npm config set registry https://registry.npmjs.org/ \
+ && npm ci
 
-# Copy rest of project
 COPY . .
-COPY .env* ./
+COPY .env.production .env.production
+
 RUN npm run build
+
 
 FROM node:20-alpine AS runner
 

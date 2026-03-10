@@ -39,14 +39,12 @@ jobs:
           port: ${{ secrets.JSC_PORT }}
           script: |
             docker image prune -f || true
-
             docker load < nextjs-app.tar
-
-            docker stop nextjs-container || true
-            docker rm nextjs-container || true
-
+            docker rm -f nextjs-container || true
             docker run -d \
               --name nextjs-container \
               -p 3000:3000 \
               --restart unless-stopped \
+              -e NEXT_PUBLIC_BASE_URL=https://your-api-domain.com \
               nextjs-app:latest
+            rm -f nextjs-app.tar
