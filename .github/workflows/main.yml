@@ -45,6 +45,6 @@ jobs:
               --name nextjs-container \
               -p 3000:3000 \
               --restart unless-stopped \
-              -e NEXT_PUBLIC_BASE_URL=https://your-api-domain.com \
+              -e NEXT_PUBLIC_BASE_URL=http://13.235.23.30:3000
               nextjs-app:latest
             rm -f nextjs-app.tar
